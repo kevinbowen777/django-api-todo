@@ -3,6 +3,7 @@ Rest Framework(DRF)
 
 ---
 ## Features
+ - Uses a React frontend to integrate with DRF backend
  - TBD
 
 ### Installation
