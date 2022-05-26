@@ -25,12 +25,17 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h1>ToDo List</h1>
+        <p>
+        <ul>
         {this.state.todos.map(item => (
           <div key={item.id}>
-            <h1>{item.title}</h1>
+            <h2>{item.title}</h2>
             <span>{item.body}</span>
           </div>
         ))}
+        </ul>
+        </p>
       </div>
     );
   }
