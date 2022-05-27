@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  backend:
+    container_name: todo_api-backend
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    command: python /code/backend/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    environment:
+      - "DEBUG=True"
+  db:
+    image: postgres:11
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+  frontend:
+    command: npm start
+    container_name: todo_api-frontend
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
