@@ -8,12 +8,11 @@
 ### Installation
  - `git clone https://github.com/kevinbowen777/django_api-todo.git`
  - `cd django_api-todo`
- - `mkvirtualenv django_api-todo` or  `workon django_api-todo`
- - `cd backend`
- - `poetry run python manage.py runserver`
- - Open browser to http://127.0.0.1:8000/api
- - In another console, run `npm start`
- - Open browser to http://127.0.0.1:3000/
+ - `docker-compose up --build`
+ - `docker-compose exec backend python backend/manage.py migrate`
+ - URLs:
+     - http://127.0.0.1:8000/api
+     - http://127.0.0.1:3000/
 
 ---
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/kevinbowen777/django_api-todo/blob/master/LICENSE)
