@@ -15,6 +15,30 @@ exclude = '''
 )/
 '''
 
+[tool.coverage.paths]
+source = ["backend/config", "backend/todos"]
+
+[tool.coverage.run]
+branch = true
+source = ["config"]
+omit = [
+    "*/__init__.py",
+    "*manage.py",
+    "*settings*.py",
+    "*urls.py",
+    "*admin.py",
+    "*migrations/*",
+    "*tests/*",
+    "*test_*.py",
+    "*tests.py",
+    "*wsgi.py",
+    "*conftest.py",
+    "*/extra*",
+]
+
+[tool.coverage.report]
+show_missing = true
+
 [tool.isort]
 profile = "black"
 multi_line_output = 3
@@ -35,12 +59,22 @@ Django = "^4.0.4"
 djangorestframework = "^3.13.1"
 environs = {extras = ["django"], version = "^9.5.0"}
 django-cors-headers = "^3.12.0"
+coverage = {extras = ["toml"], version = "^6.4.1"}
+pytest-cov = "^3.0.0"
+pytest-django = "^4.5.2"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.19.0"
 black = "^22.3.0"
 flake8 = "^4.0.1"
 isort = "^5.10.1"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "backend.config.settings"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+filterwarnings = [
+    "ignore::django.utils.deprecation.RemovedInDjango50Warning",
+]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -1,4 +1,14 @@
-### django_api-todo  - A demo of basic Django API functionality using the Django Rest Framework(DRF)
+### django_api-todo
+
+<div align="center">
+
+  [![Status](https://img.shields.io/badge/status-active-success.svg)]()
+  [![GitHub Issues](https://img.shields.io/github/issues/kevinbowen777/django_api-todo.svg)](https://github.com/kevinbowen777/django_api-todo/issues)
+  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+
+</div>
+
+- A demo of basic Django API functionality using the Django Rest Framework(DRF)
 
 ---
 ### Features
@@ -14,8 +24,6 @@
      - http://127.0.0.1:8000/api
      - http://127.0.0.1:3000/
 
----
-[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/kevinbowen777/django_api-todo/blob/master/LICENSE)
 ---
 ### Reporting Bugs
 
