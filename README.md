@@ -18,10 +18,22 @@
 ### Installation
  - `git clone https://github.com/kevinbowen777/django_api-todo.git`
  - `cd django_api-todo`
- - `docker-compose up --build`
- - `docker-compose exec backend python backend/manage.py migrate`
+ - Local installation
+     - `poetry shell`
+     - `poetry install`
+     - Django backend
+         - `python backend/migrate.py migrate`
+         - `python backend/migrate.py createsuperuser`
+         - `python backend/manage.py runserver`
+     - React frontend
+         - `cd frontend`
+         - `npm start`
+ - Docker installation
+     - `docker-compose up --build`
+     - `docker-compose exec backend python backend/manage.py migrate`
  - URLs:
      - http://127.0.0.1:8000/api
+     - http://127.0.0.1:8000/admin
      - http://127.0.0.1:3000/
 
 ---
