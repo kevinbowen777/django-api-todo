@@ -1,9 +1,9 @@
-### django_api-todo
+### django-api-todo
 
 <div align="center">
 
   [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-  [![GitHub Issues](https://img.shields.io/github/issues/kevinbowen777/django_api-todo.svg)](https://github.com/kevinbowen777/django_api-todo/issues)
+  [![GitHub Issues](https://img.shields.io/github/issues/kevinbowen777/django-api-todo.svg)](https://github.com/kevinbowen777/django-api-todo/issues)
   [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
@@ -16,8 +16,8 @@
  - TBD
 
 ### Installation
- - `git clone https://github.com/kevinbowen777/django_api-todo.git`
- - `cd django_api-todo`
+ - `git clone https://github.com/kevinbowen777/django-api-todo.git`
+ - `cd django-api-todo`
  - Local installation
      - `poetry shell`
      - `poetry install`
@@ -39,5 +39,5 @@
 ---
 ### Reporting Bugs
 
-   Visit the [Issues page](https://github.com/kevinbowen777/django_api-todo/issues)
+   Visit the [Issues page](https://github.com/kevinbowen777/django-api-todo/issues)
       to view currently open bug reports or open a new issue.
