@@ -16,11 +16,11 @@ exclude = '''
 '''
 
 [tool.coverage.paths]
-source = ["config", "todos"]
+source = ["accounts", "config", "todos"]
 
 [tool.coverage.run]
 branch = true
-source = ["config", "todos"]
+source = ["config"]
 omit = [
     "*/__init__.py",
     "*manage.py",
@@ -35,6 +35,13 @@ omit = [
     "*conftest.py",
     "*/extra*",
 ]
+plugins = [
+    "django_coverage_plugin",
+]
+
+
+[tool.coverage.django_coverage_plugin]
+template_extensions = "html, txt, tex, email"
 
 [tool.coverage.report]
 show_missing = true
@@ -73,6 +80,8 @@ flake8-import-order = "^0.18.1"
 safety = "^2.1.0"
 nox = "^2022.8.7"
 Sphinx = "^5.2.3"
+factory-boy = "3.0.1"
+django-coverage-plugin = "^2.0.3"
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "config.settings"
