@@ -72,6 +72,8 @@ isort = "^5.10.1"
 ipython = "^8.5.0"
 friendly = "^0.7.10"
 colorama = "^0.4.5"
+pip-check = "^2.7"
+pip-audit = "^2.4.4"
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "config.settings"
