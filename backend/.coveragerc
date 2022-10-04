@@ -1,4 +1,5 @@
 [run]
+include = config/*, todos/*
 omit =
     */__init__.py,
     *manage.py,

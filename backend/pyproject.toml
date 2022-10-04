@@ -16,7 +16,7 @@ exclude = '''
 '''
 
 [tool.coverage.paths]
-source = ["backend/config", "backend/todos"]
+source = ["config", "todos"]
 
 [tool.coverage.run]
 branch = true
@@ -70,7 +70,7 @@ flake8 = "^4.0.1"
 isort = "^5.10.1"
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "backend.config.settings"
+DJANGO_SETTINGS_MODULE = "config.settings"
 python_files = ["tests.py", "test_*.py", "*_tests.py"]
 filterwarnings = [
     "ignore::django.utils.deprecation.RemovedInDjango50Warning",
