@@ -74,6 +74,13 @@ function App() {
             </Route>
          </Switch>
         </div>
+      
+      <footer className="text-center text-lg-start bg-light text-muted mt-4">
+        <div className="text-center p-4">&#169; Copyright - <a
+            target="_blank" className="text-reset fw-bold text-decoration-none"
+            href="https://twitter.com/kevinbowen">Kevin Bowen</a>
+        </div>
+      </footer>
       </div>
     );
   }
