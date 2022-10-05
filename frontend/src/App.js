@@ -10,55 +10,35 @@ import Signup from './components/signup';
 
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Navbar';
 
 
-class App extends Component {
-  state = {
-      todos: []
-  };
+function App() {
+    const user = null;
 
-  componentDidMount() {
-    this.getTodos();
-  }
-
-  getTodos() {
-    axios
-      .get('http://127.0.0.1:8000/api/')
-      .then(res => {
-        this.setState({ todos: res.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-
-  render() {
     return (
-      <div>
+      <div className="App">
       <Navbar bg="primary" variant="dark">
         <div className="container-fluid">
-          <Navbar.Brand>React-bootstrap</Navbar.Brand>
+          <Navbar.Brand>TodosApp</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+            <Container>
+              <Link class="nav-link" to={"/api"}>Todos</Link>
+              { user ? (
+                <Link class="nav-link">Logout ({user})</Link>
+              ):(
+               <>
+                <Link class="nav-link" to={"/login"}>Login</Link>
+                <Link class="nav-link" to={"/signup"}>Sign Up</Link>
+               </>
+              )}
+            </Container>
           </Nav>
         </div>
       </Navbar>
-        <h1>ToDo List</h1>
-        <p>
-        <ul>
-        {this.state.todos.map(item => (
-          <div key={item.id}>
-            <h2>{item.title}</h2>
-            <span>{item.body}</span>
-          </div>
-        ))}
-        </ul>
-        </p>
       </div>
     );
   }
-}
 
 
 export default App;
