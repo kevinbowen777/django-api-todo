@@ -13,6 +13,7 @@ from .serializers import TodoSerializer, TodoToggleCompleteSerializer
 class TodoList(generics.ListAPIView):
     serializer_class = TodoSerializer
     permission_class = [permissions.IsAuthenticated]
+    # permission_class = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
@@ -22,6 +23,7 @@ class TodoList(generics.ListAPIView):
 class TodoDetail(generics.RetrieveAPIView):
     serializer_class = TodoSerializer
     permission_class = [permissions.IsAuthenticated]
+    # permission_class = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
@@ -31,6 +33,7 @@ class TodoDetail(generics.RetrieveAPIView):
 class TodoListCreate(generics.ListCreateAPIView):
     serializer_class = TodoSerializer
     permission_class = [permissions.IsAuthenticated]
+    # permission_class = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
@@ -43,6 +46,7 @@ class TodoListCreate(generics.ListCreateAPIView):
 class TodoRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TodoSerializer
     permission_class = [permissions.IsAuthenticated]
+    # permission_class = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
@@ -52,6 +56,7 @@ class TodoRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 class TodoToggleComplete(generics.UpdateAPIView):
     serializer_class = TodoToggleCompleteSerializer
     permission_class = [permissions.IsAuthenticated]
+    # permission_class = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
