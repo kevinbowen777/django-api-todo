@@ -4,11 +4,17 @@ from .models import Todo
 from .serializers import TodoSerializer
 
 
-class ListTodo(generics.ListAPIView):
-    queryset = Todo.objects.all()
+class TodoList(generics.ListAPIView):
     serializer_class = TodoSerializer
 
+    def get_queryset(self):
+        user = self.request.user
+        return Todo.objects.filter(user=user).order_by("-created")
 
-class DetailTodo(generics.RetrieveAPIView):
-    queryset = Todo.objects.all()
+
+class TodoDetail(generics.RetrieveAPIView):
     serializer_class = TodoSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Todo.objects.filter(user=user).order_by("-created")
