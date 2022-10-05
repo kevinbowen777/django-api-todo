@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     # 3rd party
     "django_extensions",
     "rest_framework",
+    "rest_framework.authtoken",
     "corsheaders",
     # Local
     "accounts.apps.AccountsConfig",
@@ -119,7 +120,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "accounts.CustomUser"
 
 REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
-    ]
+    ],
 }

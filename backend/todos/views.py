@@ -1,4 +1,10 @@
+from django.contrib.auth import get_user_model
+from django.db import IntegrityError
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import generics, permissions
+from rest_framework.authtoken.models import Token
+from rest_framework.parsers import JSONParser
 
 from .models import Todo
 from .serializers import TodoSerializer, TodoToggleCompleteSerializer
@@ -54,3 +60,23 @@ class TodoToggleComplete(generics.UpdateAPIView):
     def perform_update(self, serializer):
         serializer.instance.completed = not (serializer.instance.completed)
         serializer.save()
+
+
+@csrf_exempt
+def signup(request):
+    if request.method == "POST":
+        try:
+            data = JSONParser().parse(request)  # data is a dictionary
+            user = get_user_model().objects.create_user(
+                username=data["username"],
+                password=data["password"],
+            )
+            user.save()
+
+            token = Token.objects.create(user=user)
+            return JsonResponse({"token": str(token)}, status=201)
+        except IntegrityError:
+            return JsonResponse(
+                {"error": "username taken. choose another username"},
+                status=400,
+            )
