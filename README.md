@@ -11,6 +11,14 @@
  - A basic to-do/task application & API built with Django 4.1 & Django REST
    Framework (DRF) 3.13 with a React frontend
 
+##### Table of Contents
+ - [Features](#features)
+ - [Installation](#installation)
+ - [Testing](#testing)
+ - [Application Demo](#application-demo)
+ - [Screenshots](#screenshots)
+ - [Reporting Bugs](#reporting-bugs)
+
 ---
 ### Features
  - Application
