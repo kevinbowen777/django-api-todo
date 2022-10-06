@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -50,13 +49,13 @@ function App() {
           <Navbar.Brand>TodosApp</Navbar.Brand>
           <Nav className="me-auto">
             <Container>
-              <Link class="nav-link" to={"/todos"}>Todos</Link>
+              <Link className="nav-link" to={"/todos"}>Todos</Link>
               { user ? (
-                <Link class="nav-link">Logout ({user})</Link>
+                <Link className="nav-link">Logout ({user})</Link>
               ):(
                <>
-                <Link class="nav-link" to={"/login"}>Login</Link>
-                <Link class="nav-link" to={"/signup"}>Sign Up</Link>
+                <Link className="nav-link" to={"/login"}>Login</Link>
+                <Link className="nav-link" to={"/signup"}>Sign Up</Link>
                </>
               )}
             </Container>
@@ -73,16 +72,16 @@ function App() {
              <AddTodo {...props} token={token} />
             }>
             </Route>
-              <Route path="/todos/:id" render={(props)=>
+              <Route path="/todos/:id/" render={(props)=>
              <AddTodo {...props} token={token} />
             }>
             </Route>
               <Route path="/login" render={(props)=>
-             <AddTodo {...props} login={login} />
+             <Login {...props} login={login} />
             }>
             </Route>
               <Route path="/signup" render={(props)=>
-             <AddTodo {...props} signup={signup} />
+             <Signup {...props} signup={signup} />
             }>
             </Route>
          </Switch>
