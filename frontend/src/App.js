@@ -42,7 +42,17 @@ function App() {
     }
 
     async function signup(user = null){  // default user to null
-        setUser(null);
+        TodoDataService.signup(user)
+          .then(response =>{
+            setToken(response.data.token);
+            setUser(user.username);
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('user', user.username);
+          })
+          .catch( e =>{
+            console.log(e);
+              setError(e.toString());
+          })
     }
 
     return (
