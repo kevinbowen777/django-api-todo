@@ -40,7 +40,7 @@ const Login = props => {
             <Form.Label>Password</Form.Label>
               <Form.Control
                   type="password"
-                  password="Enter password"
+                  placeholder="Enter password"
                   value={password}
               onChange={onChangePassword}
               />
