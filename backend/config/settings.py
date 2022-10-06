@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "corsheaders",
     # Local
-    "accounts.apps.AccountsConfig",
+    # "accounts.apps.AccountsConfig",
+    "api.apps.ApiConfig",
     "todos.apps.TodosConfig",
 ]
 
@@ -118,7 +119,7 @@ STATIC_URL = "/static/"
 # Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = "accounts.CustomUser"
+# AUTH_USER_MODEL = "accounts.CustomUser"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [

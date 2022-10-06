@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, get_user_model
+from django.contrib.auth import authenticate
 from django.db import IntegrityError
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -7,23 +7,24 @@ from rest_framework.authtoken.models import Token
 from rest_framework.parsers import JSONParser
 
 from .models import Todo
-from .serializers import TodoSerializer, TodoToggleCompleteSerializer
+from api.serializers import TodoSerializer, TodoToggleCompleteSerializer
 
 
 class TodoList(generics.ListAPIView):
     serializer_class = TodoSerializer
-    permission_class = [permissions.IsAuthenticated]
-    # permission_class = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
+        # return Todo.objects.all()
         return Todo.objects.filter(user=user).order_by("-created")
 
 
 class TodoDetail(generics.RetrieveAPIView):
     serializer_class = TodoSerializer
-    permission_class = [permissions.IsAuthenticated]
-    # permission_class = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
@@ -32,8 +33,8 @@ class TodoDetail(generics.RetrieveAPIView):
 
 class TodoListCreate(generics.ListCreateAPIView):
     serializer_class = TodoSerializer
-    permission_class = [permissions.IsAuthenticated]
-    # permission_class = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
@@ -45,8 +46,8 @@ class TodoListCreate(generics.ListCreateAPIView):
 
 class TodoRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TodoSerializer
-    permission_class = [permissions.IsAuthenticated]
-    # permission_class = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
@@ -55,8 +56,8 @@ class TodoRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 
 class TodoToggleComplete(generics.UpdateAPIView):
     serializer_class = TodoToggleCompleteSerializer
-    permission_class = [permissions.IsAuthenticated]
-    # permission_class = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
@@ -72,7 +73,8 @@ def signup(request):
     if request.method == "POST":
         try:
             data = JSONParser().parse(request)  # data is a dictionary
-            user = get_user_model().objects.create_user(
+            # user = get_user_model().objects.create_user(
+            user = User.objects.create_user(
                 username=data["username"],
                 password=data["password"],
             )
