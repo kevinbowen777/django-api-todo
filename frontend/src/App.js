@@ -35,7 +35,10 @@ function App() {
     }
 
     async function logout(){
-        setUser(null);
+        setToken('');
+        setUser('');
+        localStorage.setItem('token', '');
+        localStorage.setItem('user', '');
     }
 
     async function signup(user = null){  // default user to null
@@ -51,7 +54,7 @@ function App() {
             <Container>
               <Link className="nav-link" to={"/todos"}>Todos</Link>
               { user ? (
-                <Link className="nav-link">Logout ({user})</Link>
+                <Link className="nav-link" onClick={logout}>Logout ({user})</Link>
               ):(
                <>
                 <Link className="nav-link" to={"/login"}>Login</Link>
