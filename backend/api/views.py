@@ -10,44 +10,22 @@ from rest_framework.parsers import JSONParser
 from todos.models import Todo
 
 
-class TodoList(generics.ListAPIView):
-    serializer_class = TodoSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-    def get_queryset(self):
-        user = self.request.user
-        # return Todo.objects.all()
-        return Todo.objects.filter(user=user).order_by("-created")
-
-
-class TodoDetail(generics.RetrieveAPIView):
-    serializer_class = TodoSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-    def get_queryset(self):
-        user = self.request.user
-        return Todo.objects.filter(user=user).order_by("-created")
-
-
 class TodoListCreate(generics.ListCreateAPIView):
     serializer_class = TodoSerializer
     permission_classes = [permissions.IsAuthenticated]
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
         return Todo.objects.filter(user=user).order_by("-created")
 
     def perform_create(self, serializer):
+        # serializer holds a django model
         serializer.save(user=self.request.user)
 
 
 class TodoRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TodoSerializer
     permission_classes = [permissions.IsAuthenticated]
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
@@ -57,7 +35,6 @@ class TodoRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 class TodoToggleComplete(generics.UpdateAPIView):
     serializer_class = TodoToggleCompleteSerializer
     permission_classes = [permissions.IsAuthenticated]
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
@@ -73,7 +50,6 @@ def signup(request):
     if request.method == "POST":
         try:
             data = JSONParser().parse(request)  # data is a dictionary
-            # user = get_user_model().objects.create_user(
             user = User.objects.create_user(
                 username=data["username"],
                 password=data["password"],
@@ -106,4 +82,4 @@ def login(request):
                 token = Token.objects.get(user=user)
             except BaseException:  # if token not in db, create a new one
                 token = Token.objects.create(user=user)
-            return JsonResponse({"token": str(token)}, status=200)
+            return JsonResponse({"token": str(token)}, status=201)
