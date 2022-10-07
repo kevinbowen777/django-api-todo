@@ -25,6 +25,15 @@ const TodosList = props => {
       });
   }
 
+  const deleteTodo = (todoId) => {
+    TodoDataService.deleteTodo(todoId, props.token)
+      .then(response => {
+        retrieveTodos();
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
 
   return (
     <Container>
@@ -58,7 +67,7 @@ const TodosList = props => {
                      Edit
                     </Button>
                   </Link>
-                  <Button variant="outline-danger">
+                  <Button variant="outline-danger" onClick={() => deleteTodo(todo.id)}>
                    Delete
                   </Button>
                 </Card.Body>
