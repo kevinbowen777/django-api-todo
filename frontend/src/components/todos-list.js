@@ -35,6 +35,17 @@ const TodosList = props => {
       });
   }
 
+  const completeTodo = (todoId) => {
+    TodoDataService.completeTodo(todoId, props.token)
+      .then(response => {
+        retrieveTodos();
+        console.log("completeTodo", todoId);
+      })
+      .catch(e => {
+        console.log(e);
+      })
+  }
+
   return (
     <Container>
       {props.token == null || props.token === "" ? (
@@ -67,8 +78,11 @@ const TodosList = props => {
                      Edit
                     </Button>
                   </Link>
-                  <Button variant="outline-danger" onClick={() => deleteTodo(todo.id)}>
+                  <Button variant="outline-danger" onClick={() => deleteTodo(todo.id)} className="me-2">
                    Delete
+                  </Button>
+                  <Button variant="outline-success" onClick={() => completeTodo(todo.id)}>
+                    Complete
                   </Button>
                 </Card.Body>
               </Card>
