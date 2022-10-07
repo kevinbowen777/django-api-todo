@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 
-class TodoDataService {
+class TodoDataService{
 
     getAll(token){
-        axios.defaults.headers.common["Authorization"] = "Token" + token;
+        axios.defaults.headers.common["Authorization"] = "Token " + token;
         return axios.get("http://localhost:8000/api/todos/");
     }
 
