@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import moment from 'moment';
 
 
 const TodosList = props => {
@@ -40,7 +41,7 @@ const TodosList = props => {
                   <div>
                     <Card.Title>{todo.title}</Card.Title>
                     <Card.Text><b>Notes:</b> {todo.body}</Card.Text>
-                    <Card.Text>Date created: {todo.created}</Card.Text>
+                    <Card.Text>Date created: {moment(todo.created).format("Do MMMM YYYY")}</Card.Text>
                   </div>
                   <Link to={{
                     pathname: "/todos/" + todo.id,
