@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 
 
 const TodosList = props => {
@@ -26,32 +27,40 @@ const TodosList = props => {
 
   return (
     <Container>
-      {todos.map((todo) => {
-        return (
-          <Card key={todo.id} className="mb-3">
-            <Card.Body>
-              <div>
-                <Card.Title>{todo.title}</Card.Title>
-                <Card.Text><b>Notes:</b> {todo.body}</Card.Text>
-                <Card.Text>Date created: {todo.created}</Card.Text>
-              </div>
-              <Link to={{
-                pathname: "/todos/" + todo.id,
-                state: {
-                currentTodo: todo
-                }
-              }}>
-                <Button variant="outline-info" className="me-2">
-                 Edit
-                </Button>
-              </Link>
-              <Button variant="outline-danger">
-               Delete
-              </Button>
-            </Card.Body>
-          </Card>
-        )
-       })}
+      {props.token == null || props.token === "" ? (
+        <Alert variant='warning'>
+         You are not logged in. Please <Link to={"/login"}>login</Link> to see your todos.
+        </Alert>
+      ):(
+        <div>
+          {todos.map((todo) => {
+            return (
+              <Card key={todo.id} className="mb-3">
+                <Card.Body>
+                  <div>
+                    <Card.Title>{todo.title}</Card.Title>
+                    <Card.Text><b>Notes:</b> {todo.body}</Card.Text>
+                    <Card.Text>Date created: {todo.created}</Card.Text>
+                  </div>
+                  <Link to={{
+                    pathname: "/todos/" + todo.id,
+                    state: {
+                    currentTodo: todo
+                    }
+                  }}>
+                    <Button variant="outline-info" className="me-2">
+                     Edit
+                    </Button>
+                  </Link>
+                  <Button variant="outline-danger">
+                   Delete
+                  </Button>
+                </Card.Body>
+              </Card>
+            )
+           })}
+        </div>
+      )}
     </Container>
   );
 }
