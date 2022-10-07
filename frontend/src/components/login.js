@@ -10,13 +10,13 @@ const Login = props => {
     const [password, setPassword] = useState("");
 
     const onChangeUsername = e => {
-        const username = e.target.value;
-        setUsername(username);
+      const username = e.target.value;
+      setUsername(username);
     }
 
     const onChangePassword = e => {
-        const password = e.target.value;
-        setPassword(password);
+      const password = e.target.value;
+      setPassword(password);
     }
 
     const login = () => {
@@ -33,7 +33,7 @@ const Login = props => {
                   type="text"
                   placeholder="Enter username"
                   value={username}
-              onChange={onChangeUsername}
+                  onChange={onChangeUsername}
               />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -42,7 +42,7 @@ const Login = props => {
                   type="password"
                   placeholder="Enter password"
                   value={password}
-              onChange={onChangePassword}
+                  onChange={onChangePassword}
               />
                </Form.Group>
              <Button variant="primary" onClick={login}>
