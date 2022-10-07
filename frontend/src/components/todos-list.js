@@ -68,6 +68,7 @@ const TodosList = props => {
                     <Card.Text><b>Notes:</b> {todo.body}</Card.Text>
                     <Card.Text>Date created: {moment(todo.created).format("Do MMMM YYYY")}</Card.Text>
                   </div>
+                {!todo.completed &&
                   <Link to={{
                     pathname: "/todos/" + todo.id,
                     state: {
@@ -78,6 +79,7 @@ const TodosList = props => {
                      Edit
                     </Button>
                   </Link>
+                }
                   <Button variant="outline-danger" onClick={() => deleteTodo(todo.id)} className="me-2">
                    Delete
                   </Button>
