@@ -34,6 +34,11 @@ const TodosList = props => {
         </Alert>
       ):(
         <div>
+          <Link to={"/todos/create"}>
+            <Button variant="outline-info" className="mb-3">
+              Add To-do
+            </Button>
+          </Link>
           {todos.map((todo) => {
             return (
               <Card key={todo.id} className="mb-3">
