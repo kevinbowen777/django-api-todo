@@ -63,7 +63,7 @@ const TodosList = props => {
             return (
               <Card key={todo.id} className="mb-3">
                 <Card.Body>
-                  <div>
+                  <div className={`${todo.completed ? "text-decoration-line-through" : ""}`}>
                     <Card.Title>{todo.title}</Card.Title>
                     <Card.Text><b>Notes:</b> {todo.body}</Card.Text>
                     <Card.Text>Date created: {moment(todo.created).format("Do MMMM YYYY")}</Card.Text>
