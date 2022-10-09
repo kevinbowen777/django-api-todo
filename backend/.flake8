@@ -18,3 +18,5 @@ per-file-ignores =
     config/tests/*:S101,S106
     backend/todos/tests.py:S101,S106
     backend/todos/tests/*:S101,S106
+    todos/tests.py:S101,S106
+    todos/tests/*:S101,S106
