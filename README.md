@@ -65,6 +65,26 @@
      - http://127.0.0.1:3000/ (React frontend)
 
 ---
+
+### Testing
+ - `coverage run -m pytest`
+ - Nox (includes sessions for black, lint, safety, tests)
+     - testing supported for Python 3.9, 3.10, 3.11
+     - e.g. `nox`, `nox -rs lint-3.11`, `nox -s tests`
+
+---
+
+### Application Demo
+A live application demonstration (Frontend hosted at Netlify, backend at PythonAnywhere)
+ - [django-api-todo](https://sweet-tartufo-3d13a6.netlify.app/)
+
+---
+
+### Screenshots
+
+### Home
+
+
 ### Reporting Bugs
 
    Visit the [Issues page](https://github.com/kevinbowen777/django-api-todo/issues)
