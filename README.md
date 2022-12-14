@@ -11,6 +11,8 @@
  - A basic to-do/task application & API built with Django 4.1 & Django REST
    Framework (DRF) 3.13 with a React frontend
 
+[Mirror repository](https://gitlab.com/kevinbowen/django-api-todo.git)
+
 ##### Table of Contents
  - [Features](#features)
  - [Installation](#installation)
